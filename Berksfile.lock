@@ -1,0 +1,38 @@
+DEPENDENCIES
+  apt
+  brightbox
+    git: git://github.com/brasilct/brightbox.git
+    revision: 3e1e1a24bb49cd24cc7e5bdad8e909bf6c08bdd6
+  build-essential
+  newvoucher
+    path: newvoucher
+  timezone
+    git: git://github.com/winhamwr/chef-timezone.git
+    revision: 2e8e32dfcc8c70964d7d77de0eb503510c2f6c24
+
+GRAPH
+  apt (2.9.2)
+  bluepill (2.4.1)
+    rsyslog (~> 2.0)
+  brightbox (0.2.0)
+    apt (>= 0.0.0)
+    build-essential (>= 0.0.0)
+  build-essential (2.2.4)
+  newvoucher (0.0.1)
+    nginx (>= 0.0.0)
+  nginx (2.7.6)
+    apt (~> 2.2)
+    bluepill (~> 2.3)
+    build-essential (~> 2.0)
+    ohai (~> 2.0)
+    runit (~> 1.2)
+    yum-epel (~> 0.3)
+  ohai (2.0.4)
+  packagecloud (0.1.1)
+  rsyslog (2.2.0)
+  runit (1.7.6)
+    packagecloud (>= 0.0.0)
+  timezone (0.0.1)
+  yum (3.8.2)
+  yum-epel (0.6.5)
+    yum (~> 3.2)

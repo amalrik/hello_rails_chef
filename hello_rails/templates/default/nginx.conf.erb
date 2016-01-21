@@ -1,0 +1,41 @@
+upstream <%= @application %> {
+  server unix://<%= @deploy[:deploy_to] %>/shared/sockets/puma.sock;
+}
+
+server {
+  listen 80 default_server;
+
+  server_name <%= @deploy[:server_name] %>;
+  root <%= @deploy[:deploy_to] %>/current/public;
+
+  location / {
+    proxy_pass http://<%= @application %>;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  }
+
+  location = /healthcheck {
+    auth_basic off;
+    allow all;
+
+    proxy_pass http://<%= @application %>;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  }
+
+  location ~* \.(ttf|ttc|otf|eot|woff|svg|css|ico|txt)$ {
+    add_header Access-Control-Allow-Origin *;
+    expires 1M;
+    access_log off;
+    add_header Cache-Control "public";
+  }
+
+  location ~ ^/(system|assets|spree|description_images|ckeditor_assets)/  {
+    root <%= @deploy[:deploy_to] %>/current/public;
+    expires max;
+    break;
+  }
+
+  client_max_body_size 4G;
+  keepalive_timeout 10;
+}
