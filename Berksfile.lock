@@ -2,10 +2,10 @@ DEPENDENCIES
   apt
   brightbox
     git: git://github.com/brasilct/brightbox.git
-    revision: 3e1e1a24bb49cd24cc7e5bdad8e909bf6c08bdd6
+    revision: 3fe82a198b97362321372966ce6b2ac7962bd9b0
   build-essential
-  newvoucher
-    path: newvoucher
+  hello_rails
+    path: hello_rails
   timezone
     git: git://github.com/winhamwr/chef-timezone.git
     revision: 2e8e32dfcc8c70964d7d77de0eb503510c2f6c24
@@ -18,7 +18,7 @@ GRAPH
     apt (>= 0.0.0)
     build-essential (>= 0.0.0)
   build-essential (2.2.4)
-  newvoucher (0.0.1)
+  hello_rails (0.0.1)
     nginx (>= 0.0.0)
   nginx (2.7.6)
     apt (~> 2.2)
@@ -33,6 +33,6 @@ GRAPH
   runit (1.7.6)
     packagecloud (>= 0.0.0)
   timezone (0.0.1)
-  yum (3.8.2)
+  yum (3.9.0)
   yum-epel (0.6.5)
     yum (~> 3.2)
